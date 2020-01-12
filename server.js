@@ -28,12 +28,12 @@ db.connect((err) => {
 });
 
 //add new student
-app.post('/list', function (req,res) {
+app.post('/login', function (req,res) {
     console.log(req.body);
     let username = req.body.username;
     let password = req.body.password;
    
-        let sql = `SELECT ${username},${password} FROM  loginasadmin WHERE username=${username} AND password=${password}`;
+        let sql = `SELECT username, password FROM loginasadmin WHERE username = "${username}" AND password = "${password}"`;
         db.query(sql, function (err) {
             if (err){
                 res.status(400).send("Error, record not found!");
